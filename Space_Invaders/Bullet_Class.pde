@@ -1,25 +1,21 @@
 class Bullet{
-  float xPos, yPos, xSpeed, ySpeed, inactiveX, inactiveY;
+  float xPos, yPos, ySpeed;
   boolean active = false;
   
-  Bullet(float tempInactiveX,float tempInactiveY, float tempXSpeed, float tempYSpeed){
-    inactiveX = tempInactiveX;
-    inactiveY = tempInactiveY;
-    xSpeed = tempXSpeed;
+  Bullet(float tempYSpeed){
     ySpeed = tempYSpeed;
-    
   }
+  
   void display(){
     if(active){
       circle(xPos,yPos,10);
     } else {
-      circle(inactiveX,inactiveY,10);
+      circle(175,-10,10);
     }
   }
   
   void update(){
     if(active){
-      xPos += xSpeed;
       yPos += ySpeed;
       
       if(yPos < 0 || yPos > height  || xPos < 0 || xPos > width){

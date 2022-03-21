@@ -13,11 +13,11 @@ class Gunner{
   }
   
   void move(){
-    if(rightPressed){
+    if(rightPressed && xPos < width-50){
       xPos += 5;
     }
     
-    if(leftPressed){
+    if(leftPressed && xPos > 50){
       xPos -= 5;
     }
   }

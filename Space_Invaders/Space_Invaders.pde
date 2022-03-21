@@ -1,13 +1,14 @@
 boolean leftPressed, rightPressed;  //The variables for tracking held keys (avoids windows' flawed key repetition detection)
+
 import processing.sound.*;
 SoundFile shoot, explosion;
 
 Gunner Player;    //Establishes the player character as an instance of a gunner object (leaves room for local co-op)
 
 Blockade[] Blockades = new Blockade[4];
-Enemy[] Invaders = new Enemy[15];
+Enemy[] Invaders = new Enemy[24];
 
-Bullet[] FriendlyBullets = new Bullet[5]; 
+Bullet[] FriendlyBullets = new Bullet[4]; 
 
 void setup(){
   fullScreen();
@@ -27,7 +28,7 @@ void setup(){
   }
   
   for(int i = 0; i < FriendlyBullets.length; i++){
-    FriendlyBullets[i] = new Bullet(175 + 20 *i, height-40,0,-5);
+    FriendlyBullets[i] = new Bullet(-5);
   }
 }
 
@@ -35,7 +36,6 @@ void setup(){
 void draw(){
   clear();
   background(0);
-  drawHUD();
   
   Player.display();
   Player.move();
@@ -51,12 +51,6 @@ void draw(){
     bullet.hitReg();
   }
 }
-
-void drawHUD(){
-  text("AMMO:",100,height-30);
-  
-}
-
 
 void keyPressed(){
   if(keyCode == LEFT){
