@@ -23,22 +23,23 @@ class Bullet{
   }
   
   void hitReg(){
-    for(Blockade blockade: Blockades){
-      if(active && blockade.HP > 0  &&  xPos > blockade.xPos-50 && xPos < blockade.xPos+50){
-        blockade.HP--;
-        active = false;
-        explosion.play();
-      }
-    }
-    if(ySpeed < 0){
-      for(Enemy invader: Invaders){
-        if(invader.active  &&  dist(xPos,yPos,invader.xPos,invader.yPos) < 50){
-          invader.active = false;
+    if(active){
+      for(Blockade blockade: Blockades){
+        if(blockade.HP > 0  &&  xPos > blockade.xPos-50 && xPos < blockade.xPos+50){
+          blockade.HP--;
           active = false;
           explosion.play();
         }
       }
+      if(ySpeed < 0){
+        for(Enemy invader: Invaders){
+          if(invader.active  &&  dist(xPos,yPos,invader.xPos,invader.yPos) < 50){
+            invader.active = false;
+            active = false;
+            explosion.play();
+          }
+        }
+      }
     }
-    
   }
 }

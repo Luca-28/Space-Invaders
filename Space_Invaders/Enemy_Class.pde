@@ -1,8 +1,8 @@
 class Enemy{
-  float xPos, yPos, xSpeed = 3, ySpeed = 0;
+  int xPos, yPos, xSpeed = 1, ySpeed = 0;
   boolean active = true;
   
-  Enemy(float tempXPos, float tempYPos){  //Constructor
+  Enemy(int tempXPos, int tempYPos){  //Constructor
     xPos = tempXPos;
     yPos = tempYPos;
   }
@@ -15,8 +15,24 @@ class Enemy{
   
   void move(){
     if(active){
-      xPos += xSpeed;
-      yPos += ySpeed;
+      if(ySpeed == 0){
+        xPos += xSpeed;
+      } else {
+        yPos += ySpeed;
+        
+        if(yPos % 50 == 0){
+        for(Enemy invader: Invaders){
+          invader.xSpeed = int(1 - (xPos / (width/2)));
+          invader.ySpeed = 0;
+        }
+      }
+      }
+      
+      if(xPos > width || xPos < 0){
+        for(Enemy invader: Invaders){
+          invader.ySpeed = 1;
+        }
+      }
     }
   }
   

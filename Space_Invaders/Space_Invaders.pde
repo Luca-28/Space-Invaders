@@ -27,8 +27,10 @@ void setup(){
   for(int i = 0; i < Blockades.length; i++){
     Blockades[i] = new Blockade((i+1) * width/5);
   }
-  for(int i = 0; i < Invaders.length; i++){
-    Invaders[i] = new Enemy(200  +  50 * (i - i%6), 100 + 100 * (i%4));
+  for(int x = 0; x < 6; x++){
+    for(int y = 0; y < 4; y++){
+      Invaders[(x + 6*y)] = new Enemy((x+1)*width/14 + width/4,(y+1)*80);
+    }
   }
   for(int i = 0; i < FriendlyBullets.length; i++){
     FriendlyBullets[i] = new Bullet(-5);
@@ -50,7 +52,7 @@ void draw(){
   
   for(Enemy invader: Invaders){
     invader.display();
-    //invader.move();
+    invader.move();
   }
   
   for(Bullet bullet: FriendlyBullets){

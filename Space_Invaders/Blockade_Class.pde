@@ -1,6 +1,6 @@
 class Blockade{
   float xPos;
-  int HP = 5;
+  int HP = 3;
   
   Blockade(float tempXPos){  //Constructor
     xPos = tempXPos;
