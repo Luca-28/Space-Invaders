@@ -26,10 +26,15 @@ void setup(){
   for(int i = 0; i < Blockades.length; i++){
     Blockades[i] = new Blockade((i+1) * width/5);
   }
-  
+  for(int i = 0; i < Invaders.length; i++){
+    print("Invader " + i + " Created - ");
+    //Invaders[i] = new Enemy(x,y);
+  }
   for(int i = 0; i < FriendlyBullets.length; i++){
     FriendlyBullets[i] = new Bullet(-5);
   }
+  
+  
 }
 
 
@@ -53,11 +58,11 @@ void draw(){
 }
 
 void keyPressed(){
-  if(keyCode == LEFT){
+  if(keyCode == LEFT || key == 'a'){
     leftPressed = true;
   }
   
-  if(keyCode == RIGHT){
+  if(keyCode == RIGHT ||key == 'd'){
     rightPressed = true;
   }
   
@@ -67,11 +72,11 @@ void keyPressed(){
 }
 
 void keyReleased(){
-  if(keyCode == LEFT){
+  if(keyCode == LEFT ||key == 'a'){
     leftPressed = false;
   }
   
-  if(keyCode == RIGHT){
+  if(keyCode == RIGHT ||key == 'd'){
     rightPressed = false;
   }
 }
