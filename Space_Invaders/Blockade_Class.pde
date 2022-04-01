@@ -6,11 +6,9 @@ class Blockade{
     xPos = tempXPos;
   }
   
-  
   void display(){
     if(HP > 0){
       rect(xPos,height-200,100,30);
-      text(HP,xPos,height-100);
     }
   }
 }

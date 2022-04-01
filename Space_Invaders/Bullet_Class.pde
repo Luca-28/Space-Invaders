@@ -9,8 +9,6 @@ class Bullet{
   void display(){
     if(active){
       circle(xPos,yPos,10);
-    } else {
-      circle(175,-10,10);
     }
   }
   
@@ -32,5 +30,15 @@ class Bullet{
         explosion.play();
       }
     }
+    if(ySpeed < 0){
+      for(Enemy invader: Invaders){
+        if(invader.active  &&  dist(xPos,yPos,invader.xPos,invader.yPos) < 50){
+          invader.active = false;
+          active = false;
+          explosion.play();
+        }
+      }
+    }
+    
   }
 }

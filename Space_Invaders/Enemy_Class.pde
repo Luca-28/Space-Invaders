@@ -1,5 +1,6 @@
 class Enemy{
   float xPos, yPos, xSpeed = 3, ySpeed = 0;
+  boolean active = true;
   
   Enemy(float tempXPos, float tempYPos){  //Constructor
     xPos = tempXPos;
@@ -7,13 +8,16 @@ class Enemy{
   }
   
   void display(){
-    rect(xPos,yPos,5,5);
+    if(active){
+      rect(xPos,yPos,50,50);
+    }
   }
   
   void move(){
-    xPos += xSpeed;
-    yPos += ySpeed;
-    
+    if(active){
+      xPos += xSpeed;
+      yPos += ySpeed;
+    }
   }
   
   void shoot(){

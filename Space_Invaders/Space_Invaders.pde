@@ -6,9 +6,10 @@ SoundFile shoot, explosion;
 Gunner Player;    //Establishes the player character as an instance of a gunner object (leaves room for local co-op)
 
 Blockade[] Blockades = new Blockade[4];
+
 Enemy[] Invaders = new Enemy[24];
 
-Bullet[] FriendlyBullets = new Bullet[4]; 
+Bullet[] FriendlyBullets = new Bullet[3]; 
 
 void setup(){
   fullScreen();
@@ -27,14 +28,11 @@ void setup(){
     Blockades[i] = new Blockade((i+1) * width/5);
   }
   for(int i = 0; i < Invaders.length; i++){
-    print("Invader " + i + " Created - ");
-    //Invaders[i] = new Enemy(x,y);
+    Invaders[i] = new Enemy(200  +  50 * (i - i%6), 100 + 100 * (i%4));
   }
   for(int i = 0; i < FriendlyBullets.length; i++){
     FriendlyBullets[i] = new Bullet(-5);
   }
-  
-  
 }
 
 
@@ -48,6 +46,11 @@ void draw(){
   
   for(Blockade blockade: Blockades){
     blockade.display();
+  }
+  
+  for(Enemy invader: Invaders){
+    invader.display();
+    //invader.move();
   }
   
   for(Bullet bullet: FriendlyBullets){
