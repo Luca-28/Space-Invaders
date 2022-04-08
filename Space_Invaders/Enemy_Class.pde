@@ -19,10 +19,10 @@ class Enemy{
         xPos += xSpeed;
       } else {
         yPos += ySpeed;
-        
+        println(yPos % 50);
         if(yPos % 50 == 0){
         for(Enemy invader: Invaders){
-          invader.xSpeed = int(1 - (xPos / (width/2)));
+          invader.xSpeed *= -1;
           invader.ySpeed = 0;
         }
       }
@@ -30,6 +30,7 @@ class Enemy{
       
       if(xPos > width || xPos < 0){
         for(Enemy invader: Invaders){
+          //invader.xPos += int(1 - (xPos / (width/2)));
           invader.ySpeed = 1;
         }
       }

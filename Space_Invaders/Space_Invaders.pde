@@ -1,5 +1,7 @@
 boolean leftPressed, rightPressed;  //The variables for tracking held keys (avoids windows' flawed key repetition detection)
 
+int invaderXSpeed = 1, InvaderYSPeed = 0;
+
 import processing.sound.*;
 SoundFile shoot, explosion;
 
@@ -29,7 +31,7 @@ void setup(){
   }
   for(int x = 0; x < 6; x++){
     for(int y = 0; y < 4; y++){
-      Invaders[(x + 6*y)] = new Enemy((x+1)*width/14 + width/4,(y+1)*80);
+      Invaders[(x + 6*y)] = new Enemy((x+1)*width/14 + width/4,(y+1)*100);
     }
   }
   for(int i = 0; i < FriendlyBullets.length; i++){
